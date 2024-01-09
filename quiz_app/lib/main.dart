@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'helper.dart';
 
 void main() => runApp(QuizApp());
 
@@ -28,15 +29,23 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> marcadorDePontos = [];
 
-  List<String> perguntas = [
-    'O metrô é um dos meios de transporte mais seguros do mundo',
-    'A culinária brasileira é uma das melhores do mundo.',
-    'Vacas podem voar, assim como peixes utilizam os pés para andar.'
-  ];
+  void conferirResposta(bool respostaSelecionadaPeloUsuario) {
+    bool respostaCerta = helper.obterResposta();
 
-  List<bool> respostas = [true, true, false];
+    setState(() {
+      if (respostaSelecionadaPeloUsuario == respostaCerta) {
+        print('Usuário acertou!');
+        marcadorDePontos.add(Icon(Icons.check, color: Colors.green));
+      } else {
+        print('Usuário errou!');
+        marcadorDePontos.add(Icon(Icons.close, color: Colors.red));
+      }
 
-  int numeroDaQuestaoAtual = 0;
+      helper.proximaPergunta();
+    });
+  }
+
+  Helper helper = Helper();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +59,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                perguntas[numeroDaQuestaoAtual],
+                helper.obterQuestao(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -75,12 +84,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //O usuário clica no botão verdadeiro.
-                bool respostaCerta = respostas[numeroDaQuestaoAtual];
-
-                if (respostaCerta == true) {}
-                setState(() {
-                  numeroDaQuestaoAtual++;
-                });
+                conferirResposta(true);
               },
             ),
           ),
@@ -101,12 +105,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //O usuário clica no botão falso.
-                bool respostaCerta = respostas[numeroDaQuestaoAtual];
-
-                if (respostaCerta == false) {}
-                setState(() {
-                  numeroDaQuestaoAtual++;
-                });
+                conferirResposta(false);
               },
             ),
           ),
@@ -118,9 +117,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
-/*
-pergunta1:
-pergunta2: ', verdadeiro,
-pergunta3: '', falso,
-*/
