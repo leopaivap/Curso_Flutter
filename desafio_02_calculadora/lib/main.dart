@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
+import 'calculadora.dart';
 
 void main() {
   runApp(const MeuApp());
@@ -12,6 +14,9 @@ class MeuApp extends StatefulWidget {
 }
 
 class _MeuAppState extends State<MeuApp> {
+  String mensagemVisor = '';
+  Calculadora calculadora = Calculadora();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +46,7 @@ class _MeuAppState extends State<MeuApp> {
                   color: Colors.white,
                   child: Center(
                     child: Text(
-                      'visor',
+                      mensagemVisor,
                       style: TextStyle(
                         fontSize: 50,
                       ),
@@ -69,7 +74,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = 'teste';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -85,7 +95,13 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = mensagemVisor.substring(
+                                  0, mensagemVisor.length - 1);
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -101,7 +117,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              // fazer porcentagem ainda
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -117,7 +138,15 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              if (calculadora
+                                  .verificaCaractere(mensagemVisor)) {
+                                mensagemVisor = mensagemVisor + '/';
+                              }
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                       ],
@@ -137,7 +166,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -153,7 +187,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -169,7 +208,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -185,7 +229,15 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              if (calculadora
+                                  .verificaCaractere(mensagemVisor)) {
+                                mensagemVisor = mensagemVisor + '*';
+                              }
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                       ],
@@ -205,7 +257,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -221,7 +278,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -237,7 +299,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -253,7 +320,15 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              if (calculadora
+                                  .verificaCaractere(mensagemVisor)) {
+                                mensagemVisor = mensagemVisor + '+';
+                              }
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                       ],
@@ -273,7 +348,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = mensagemVisor + '1';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -289,7 +369,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = mensagemVisor + '2';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -305,7 +390,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = mensagemVisor + '3';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -321,7 +411,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                       ],
@@ -341,7 +436,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = mensagemVisor + '0';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -357,7 +457,12 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              mensagemVisor = '';
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                         Expanded(
@@ -373,7 +478,14 @@ class _MeuAppState extends State<MeuApp> {
                                 fontSize: 28,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              double resultado =
+                                  calculadora.igual(mensagemVisor);
+                              mensagemVisor = resultado.toString();
+                              setState(() {
+                                mensagemVisor;
+                              });
+                            },
                           ),
                         ),
                       ],
