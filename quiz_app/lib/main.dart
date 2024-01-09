@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'helper.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(QuizApp());
 
@@ -28,6 +29,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Widget> marcadorDePontos = [];
+  int numeroAcertos = 0;
 
   void conferirResposta(bool respostaSelecionadaPeloUsuario) {
     bool respostaCerta = helper.obterResposta();
@@ -36,12 +38,22 @@ class _QuizPageState extends State<QuizPage> {
       if (respostaSelecionadaPeloUsuario == respostaCerta) {
         print('Usuário acertou!');
         marcadorDePontos.add(Icon(Icons.check, color: Colors.green));
+        numeroAcertos++;
       } else {
         print('Usuário errou!');
         marcadorDePontos.add(Icon(Icons.close, color: Colors.red));
       }
 
-      helper.proximaPergunta();
+      if (!helper.proximaPergunta()) {
+        Alert(
+                context: context,
+                title: "Fim do Quiz!",
+                desc: "Você acertou $numeroAcertos.")
+            .show();
+
+        marcadorDePontos = [];
+        numeroAcertos = 0;
+      }
     });
   }
 

@@ -27,15 +27,19 @@ class Helper {
   ];
 
   String obterQuestao() {
-    return _bancoDePerguntas[ _numeroDaQuestaoAtual].questao;
+    return _bancoDePerguntas[_numeroDaQuestaoAtual].questao;
   }
 
   bool obterResposta() {
-    return _bancoDePerguntas[ _numeroDaQuestaoAtual].resposta;
+    return _bancoDePerguntas[_numeroDaQuestaoAtual].resposta;
   }
 
-  void proximaPergunta(){
-    if(_numeroDaQuestaoAtual < _bancoDePerguntas.length - 1)
+  bool proximaPergunta() {
+    if (_numeroDaQuestaoAtual < _bancoDePerguntas.length - 1) {
       _numeroDaQuestaoAtual++;
+      return true;
+    }
+    _numeroDaQuestaoAtual = 0;
+    return false;
   }
 }
