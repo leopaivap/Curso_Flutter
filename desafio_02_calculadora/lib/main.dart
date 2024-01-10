@@ -75,7 +75,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = 'teste';
+                              mensagemVisor = '';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -118,7 +118,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              // fazer porcentagem ainda
+                              mensagemVisor = calculadora.porcento(mensagemVisor);
                               setState(() {
                                 mensagemVisor;
                               });
@@ -167,7 +167,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '7';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -188,7 +188,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '8';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -209,7 +209,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '9';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -258,7 +258,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '4';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -279,7 +279,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '5';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -300,7 +300,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '6';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -412,7 +412,7 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              mensagemVisor = mensagemVisor + '-';
                               setState(() {
                                 mensagemVisor;
                               });
@@ -458,7 +458,9 @@ class _MeuAppState extends State<MeuApp> {
                               ),
                             ),
                             onPressed: () {
-                              mensagemVisor = '';
+                              if (calculadora.verificaPonto(mensagemVisor))
+                                mensagemVisor = mensagemVisor + '.';
+
                               setState(() {
                                 mensagemVisor;
                               });
