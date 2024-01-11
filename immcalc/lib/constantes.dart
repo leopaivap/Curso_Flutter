@@ -13,3 +13,30 @@ const kNumeroTextStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
+
+const kBotaoGrandeTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.bold,
+);
+
+const kTituloTextStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.bold,
+);
+
+const kResultadoTextStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22,
+  fontWeight: FontWeight.bold
+);
+
+const kIMCTextStyle = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+  color: Colors.black
+);
+
+const kCorpoTextStyle = TextStyle(
+    fontSize: 22,
+  color: Colors.black
+);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'tela_principal.dart';
-
+import 'package:immcalc/telas/tela_resultados.dart';
+import 'telas/tela_principal.dart';
+import 'calculadora_imc.dart';
 
 void main() => runApp(CalculadoraIMC());
 

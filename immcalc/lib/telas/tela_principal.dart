@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:immcalc/telas/tela_resultados.dart';
 
-import 'cartao_padrao.dart';
-import 'conteudo_icone.dart';
-import 'constantes.dart';
+import '../componentes/cartao_padrao.dart';
+import '../componentes/conteudo_icone.dart';
+import '../constantes.dart';
+import '../componentes/botao_arredondado.dart';
+import '../componentes/botao_inferior.dart';
+import '../calculadora_imc.dart';
 
 enum Sexo { masculino, feminino }
 
@@ -178,35 +182,17 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               ],
             ),
           ),
-          Container(
-            color: kCorContainerInferior,
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: kAlturaContainerInferior,
-          ),
+          BotaoInferior(() {
+            CalculadoraIMC calc = CalculadoraIMC(altura, peso);
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => TelaResultados(calc.calcularIMC(),
+                      calc.obterResultado(), calc.obterInterpretacao())),
+            );
+          }, 'CALCULAR'),
         ],
-      ),
-    );
-  }
-}
-
-class BotaoArredondado extends StatelessWidget {
-  BotaoArredondado(@required this.icone, @required this.aoPressionar);
-
-  final IconData icone;
-  final VoidCallback? aoPressionar;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: aoPressionar,
-      child: Icon(icone),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF7E7E7E),
-      elevation: 6,
-      constraints: BoxConstraints.tightFor(
-        width: 56,
-        height: 56,
       ),
     );
   }
