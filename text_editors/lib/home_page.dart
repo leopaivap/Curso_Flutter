@@ -21,10 +21,10 @@ class HomePage extends StatelessWidget {
           centerTitle: true,
           toolbarHeight: 100.0,
           bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(4.0), // Altura da linha divisória
+            preferredSize: Size.fromHeight(4.0),
             child: Divider(
-              color: Colors.white, 
-              thickness: 1, 
+              color: Colors.white,
+              thickness: 1,
             ),
           ),
         ),
@@ -34,7 +34,13 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 BotaoRetangular(
-                    nomeBotao: 'Quill Html', rotaBotao: '/quill_editor'),
+                    nomeBotao: 'Flutter Quill', rotaBotao: '/flutter_quill'),
+                SizedBox(height: 20),
+                BotaoRetangular(
+                    nomeBotao: 'Quill Html', rotaBotao: '/quill_html'),
+                SizedBox(height: 20),
+                BotaoRetangular(
+                    nomeBotao: 'Summernote', rotaBotao: '/summernote'),
               ],
             ),
           ),

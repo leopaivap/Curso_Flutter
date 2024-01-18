@@ -14,15 +14,19 @@ class BotaoRetangular extends StatelessWidget {
         },
         child: Text(
           nomeBotao,
-          style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 23, fontWeight: FontWeight.bold, color: Colors.black45),
         ),
         style: ElevatedButton.styleFrom(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.black45),
+          ),
+          backgroundColor: Colors.grey.shade400,
         ),
       ),
       width: 200,
-      height: 100,
+      height: 90,
     );
   }
 }
