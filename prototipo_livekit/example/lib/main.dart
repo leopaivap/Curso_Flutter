@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_window_close/flutter_window_close.dart';
 import 'package:livekit_client/livekit_client.dart';
+import 'package:livekit_example/pages/home.dart';
 import 'package:livekit_example/theme.dart';
 import 'package:logging/logging.dart';
 import 'package:intl/intl.dart';
-import 'pages/connect.dart';
 import 'utils.dart';
 
 void main() async {
@@ -35,8 +35,8 @@ class LiveKitExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'LiveKit Flutter Example',
+        title: 'Protótipo GASS LiveKit',
         theme: LiveKitTheme().buildThemeData(context),
-        home: const ConnectPage(),
+        home: const Home(),
       );
 }

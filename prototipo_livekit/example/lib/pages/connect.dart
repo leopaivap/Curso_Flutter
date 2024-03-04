@@ -11,7 +11,10 @@ class ConnectPage extends StatefulWidget {
   //
   const ConnectPage({
     Key? key,
+    required this.conectionType,
   }) : super(key: key);
+
+  final ConnectionType conectionType;
 
   @override
   State<StatefulWidget> createState() => _ConnectPageState();
@@ -140,6 +143,7 @@ class _ConnectPageState extends State<ConnectPage> {
                     simulcast: _simulcast,
                     adaptiveStream: _adaptiveStream,
                     dynacast: _dynacast,
+                    connection: widget.conectionType,
                     preferredCodec: _preferredCodec,
                     enableBackupVideoCodec:
                         ['VP9', 'AV1'].contains(_preferredCodec),
@@ -230,110 +234,110 @@ class _ConnectPageState extends State<ConnectPage> {
                       ctrl: _tokenCtrl,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('E2EE'),
-                        Switch(
-                          value: _e2ee,
-                          onChanged: (value) => _setE2EE(value),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Simulcast'),
-                        Switch(
-                          value: _simulcast,
-                          onChanged: (value) => _setSimulcast(value),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Adaptive Stream'),
-                        Switch(
-                          value: _adaptiveStream,
-                          onChanged: (value) => _setAdaptiveStream(value),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Dynacast'),
-                        Switch(
-                          value: _dynacast,
-                          onChanged: (value) => _setDynacast(value),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: _multiCodec ? 5 : 25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Multi Codec'),
-                        Switch(
-                          value: _multiCodec,
-                          onChanged: (value) => _setMultiCodec(value),
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (_multiCodec)
-                    Padding(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('Preferred Codec:'),
-                              DropdownButton<String>(
-                                value: _preferredCodec,
-                                icon: const Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.blue,
-                                ),
-                                elevation: 16,
-                                style: const TextStyle(color: Colors.blue),
-                                underline: Container(
-                                  height: 2,
-                                  color: Colors.blueAccent,
-                                ),
-                                onChanged: (String? value) {
-                                  // This is called when the user selects an item.
-                                  setState(() {
-                                    _preferredCodec = value!;
-                                  });
-                                },
-                                items: [
-                                  'Preferred Codec',
-                                  'AV1',
-                                  'VP9',
-                                  'VP8',
-                                  'H264'
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                              )
-                            ])),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('E2EE'),
+                  //       Switch(
+                  //         value: _e2ee,
+                  //         onChanged: (value) => _setE2EE(value),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('Simulcast'),
+                  //       Switch(
+                  //         value: _simulcast,
+                  //         onChanged: (value) => _setSimulcast(value),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('Adaptive Stream'),
+                  //       Switch(
+                  //         value: _adaptiveStream,
+                  //         onChanged: (value) => _setAdaptiveStream(value),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 5),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('Dynacast'),
+                  //       Switch(
+                  //         value: _dynacast,
+                  //         onChanged: (value) => _setDynacast(value),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(bottom: _multiCodec ? 5 : 25),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       const Text('Multi Codec'),
+                  //       Switch(
+                  //         value: _multiCodec,
+                  //         onChanged: (value) => _setMultiCodec(value),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // if (_multiCodec)
+                  //   Padding(
+                  //       padding: const EdgeInsets.only(bottom: 5),
+                  //       child: Row(
+                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //           children: [
+                  //             const Text('Preferred Codec:'),
+                  //             DropdownButton<String>(
+                  //               value: _preferredCodec,
+                  //               icon: const Icon(
+                  //                 Icons.arrow_drop_down,
+                  //                 color: Colors.blue,
+                  //               ),
+                  //               elevation: 16,
+                  //               style: const TextStyle(color: Colors.blue),
+                  //               underline: Container(
+                  //                 height: 2,
+                  //                 color: Colors.blueAccent,
+                  //               ),
+                  //               onChanged: (String? value) {
+                  //                 // This is called when the user selects an item.
+                  //                 setState(() {
+                  //                   _preferredCodec = value!;
+                  //                 });
+                  //               },
+                  //               items: [
+                  //                 'Preferred Codec',
+                  //                 'AV1',
+                  //                 'VP9',
+                  //                 'VP8',
+                  //                 'H264'
+                  //               ].map<DropdownMenuItem<String>>((String value) {
+                  //                 return DropdownMenuItem<String>(
+                  //                   value: value,
+                  //                   child: Text(value),
+                  //                 );
+                  //               }).toList(),
+                  //             )
+                  //           ])),
                   ElevatedButton(
                     onPressed: _busy ? null : () => _connect(context),
                     child: Row(
@@ -361,4 +365,10 @@ class _ConnectPageState extends State<ConnectPage> {
           ),
         ),
       );
+}
+
+enum ConnectionType {
+  watch,
+  stream,
+  watchPlus,
 }

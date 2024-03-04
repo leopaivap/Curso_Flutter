@@ -5,6 +5,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:livekit_client/livekit_client.dart';
 import 'package:livekit_example/method_channels/replay_kit_channel.dart';
+import 'package:livekit_example/pages/connect.dart';
 
 import '../exts.dart';
 import '../utils.dart';
@@ -15,11 +16,13 @@ import '../widgets/participant_info.dart';
 class RoomPage extends StatefulWidget {
   final Room room;
   final EventsListener<RoomEvent> listener;
+  final ConnectionType connection;
 
   const RoomPage(
     this.room,
     this.listener, {
     Key? key,
+    required this.connection,
   }) : super(key: key);
 
   @override
@@ -264,7 +267,10 @@ class _RoomPageState extends State<RoomPage> {
                   SafeArea(
                     top: false,
                     child: ControlsWidget(
-                        widget.room, widget.room.localParticipant!),
+                      widget.room,
+                      widget.room.localParticipant!,
+                      connection: widget.connection,
+                    ),
                   )
               ],
             ),
